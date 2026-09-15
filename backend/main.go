@@ -19,7 +19,7 @@ func main() {
 		Title:  "Изучить GO",
 		Status: "new",
 	}
-	fmt.Println(task)
+	task.Print()
 
 	fmt.Println("Сервер запущен!")
 	http.ListenAndServe(":8080", nil)
