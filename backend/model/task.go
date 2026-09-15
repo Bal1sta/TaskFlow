@@ -15,3 +15,7 @@ func (t Task) Print() {
 	fmt.Println("Статус:", t.Status)
 	fmt.Println("ID:", t.ID)
 }
+
+func (t *Task) Complete() {
+	t.Status = "done"
+}

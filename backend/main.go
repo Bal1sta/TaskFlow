@@ -20,6 +20,8 @@ func main() {
 		Status: "new",
 	}
 	task.Print()
+	task.Complete()
+	task.Print()
 
 	fmt.Println("Сервер запущен!")
 	http.ListenAndServe(":8080", nil)
