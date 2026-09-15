@@ -8,9 +8,12 @@ import (
 
 
 func ServerHTTP(w http.ResponseWriter, r *http.Request){
-  fmt.Fprintln(w, "TaskFlow API работает!")
-	fmt.Fprintln(w, "Метод:", r.Method)
-	fmt.Fprintln(w, "Путь:", r.URL.Path)
+
+	if r.URL.Path == "/tasks" {
+		fmt.Fprintln(w, "TaskFlow API. Список задач")
+	} else {
+		fmt.Fprintln(w, "TaskFlow API. Главная страница")
+	}
 }
 
 func main() {
