@@ -8,7 +8,9 @@ import (
 
 
 func ServerHTTP(w http.ResponseWriter, r *http.Request){
-  fmt.Fprint(w, "TaskFlow API работает!")
+  fmt.Fprintln(w, "TaskFlow API работает!")
+	fmt.Fprintln(w, "Метод:", r.Method)
+	fmt.Fprintln(w, "Путь:", r.URL.Path)
 }
 
 func main() {
