@@ -3,24 +3,24 @@ package main
 import (
 	"fmt"
 	"net/http"
+
+	"github.com/Bal1sta/TaskFlow/handler"
+	"github.com/Bal1sta/TaskFlow/model"
 )
-
-
-
-func ServerHTTP(w http.ResponseWriter, r *http.Request){
-
-	if r.URL.Path == "/tasks" {
-		fmt.Fprintln(w, "TaskFlow API. Список задач")
-	} else {
-		fmt.Fprintln(w, "TaskFlow API. Главная страница")
-	}
-}
 
 func main() {
 
+	http.HandleFunc("/", handler.HomeHandler)
+	http.HandleFunc("/tasks", handler.TasksHandler)
+	http.HandleFunc("/health", handler.HealthHandler)
 
-	http.HandleFunc("/", ServerHTTP)
+	task := model.Task{
+		ID:     1,
+		Title:  "Изучить GO",
+		Status: "new",
+	}
+	fmt.Println(task)
 
-  fmt.Println("Сервер запущен!")
-  http.ListenAndServe(":8080", nil)
+	fmt.Println("Сервер запущен!")
+	http.ListenAndServe(":8080", nil)
 }
